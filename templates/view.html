@@ -5,11 +5,9 @@ View {{ name }}
 {% endblock %}
 
 {% block main %}
-<div class="mb-4">
-    <h5>{{ name }}</h5>
-    <h6 class="text-muted">Playtime: {{ time | play_time }}</h6>
-</div>
-<table class="table table-hover table-light table-bordered">
+<h5>{{ name }}</h5>
+<h5 class="text-muted">Playtime {{ time | play_time }}</h5>
+<table class="table table-hover">
     <thead>
         <tr>
             <th scope="col">#</th>
@@ -23,14 +21,14 @@ View {{ name }}
         {% for song in playlist %}
         <tr>
             <th scope="row">{{ loop.index }}</th>
-            <td>{{ song.name }}</th>
+            <td>{{ song.name }}</td>
             <td>{{ song.artists }}</td>
             <td>{{ song.duration | track_time }}</td>
             <td>
                 {% if song.url %}
-                <a class="btn btn-custom" href="{{ song.url }}" target="_blank">Listen</a>
+                <a class="btn btn-primary btn-custom" href="{{ song.url }}" target="_blank">Listen</a>
                 {% else %}
-                <a class="btn btn-outline-danger disabled">Listen</a>
+                <a class="btn btn-outline-danger btn-custom disabled">Listen</a>
                 {% endif %}
             </td>
         </tr>
