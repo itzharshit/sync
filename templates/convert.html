@@ -5,31 +5,38 @@ Convert Playlist
 {% endblock %}
 
 {% block main %}
-<h5>Playlist: {{ name }}</h5>
-<form method="post">
-    <table class="table table-hover table-light table-bordered">
-        <thead>
-            <tr>
-                <th scope="col">Select</th>
-                <th scope="col">Name</th>
-                <th scope="col">Artists</th>
-                <th scope="col">Preview</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for video in playlist %}
-            <tr>
-                <td><input type="checkbox" name="videoId" value="{{ video.id }}" checked></td>
-                <td>{{ video.name }}</td>
-                <td>{{ video.channel }}</td>
-                <td><a class="btn btn-custom" href="{{ video.url }}" target="_blank">Listen</a></td>
-            </tr>
-            {% endfor %}
-        </tbody>
-    </table>
-    <div class="d-flex justify-content-between mt-4">
-        <button class="btn btn-lg btn-custom" type="submit" formaction="/convert" formmethod="post">Confirm</button>
-        <button class="btn btn-lg btn-danger" type="submit" formaction="/playlists_spotify">Cancel</button>
-    </div>
-</form>
+<div class="container">
+    <h3 class="text-center">Convert Playlist</h3>
+    <h5 class="text-center">The following playlist will be made in your YouTube account.</h5>
+    <form method="post" class="mt-4">
+        <div class="input-group mb-3">
+            <span class="input-group-text">Playlist Name</span>
+            <input type="text" class="form-control" name="name" value="{{ name }}">
+        </div>
+        <table class="table table-hover table-bordered">
+            <thead>
+                <tr>
+                    <th scope="col">Include</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Artists</th>
+                    <th scope="col">Preview</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for video in playlist %}
+                    <tr>
+                        <td><input type="checkbox" name="videoId" value="{{ video.id }}" checked></td>
+                        <td>{{ video.name }}</td>
+                        <td>{{ video.channel }}</td>
+                        <td><a class="btn btn-custom" href="{{ video.url }}" target="_blank">Listen</a></td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <div class="d-flex justify-content-between mt-4">
+            <button class="btn btn-success btn-lg" type="submit" formaction="/convert">Confirm</button>
+            <button class="btn btn-danger btn-lg" type="submit" formaction="/playlists_spotify">Cancel</button>
+        </div>
+    </form>
+</div>
 {% endblock %}
