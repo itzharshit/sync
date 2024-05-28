@@ -5,16 +5,12 @@ Convert Playlist
 {% endblock %}
 
 {% block main %}
-<h5 class="mb-4">The following playlist will be made in your YouTube account.</h5>
-<form>
-    <div class="input-group mb-3">
-        <span class="input-group-text">Playlist Name</span>
-        <input type="text" class="form-control" name="name" value="{{ name }}">
-    </div>
+<h5>Playlist: {{ name }}</h5>
+<form method="post">
     <table class="table table-hover table-light table-bordered">
         <thead>
             <tr>
-                <th scope="col">Include</th>
+                <th scope="col">Select</th>
                 <th scope="col">Name</th>
                 <th scope="col">Artists</th>
                 <th scope="col">Preview</th>
@@ -32,7 +28,7 @@ Convert Playlist
         </tbody>
     </table>
     <div class="d-flex justify-content-between mt-4">
-        <button class="btn btn-lg btn-custom" style="background: linear-gradient(45deg, #6a11cb, #2575fc); border: none;" type="submit" formaction="/convert" formmethod="post">Confirm</button>
+        <button class="btn btn-lg btn-custom" type="submit" formaction="/convert" formmethod="post">Confirm</button>
         <button class="btn btn-lg btn-danger" type="submit" formaction="/playlists_spotify">Cancel</button>
     </div>
 </form>
