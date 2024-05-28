@@ -8,7 +8,7 @@ Authorize
 <form method="post" class="d-flex flex-column align-items-center">
     <div class="mb-3">
         {% if spot_auth %}
-        <button class="btn btn-success mx-auto w-auto" name="disconnect" formaction="/disconnect" value="Spotify">Disconnect from Spotify</button>
+        <button class="btn btn-danger mx-auto w-auto" name="disconnect" formaction="/disconnect" value="Spotify">Disconnect from Spotify</button>
         {% else %}
         <button class="btn btn-custom mx-auto w-auto" name="connect" formaction="/auth" type="submit" value="spotify">Connect to Spotify</button>
         {% endif %}
