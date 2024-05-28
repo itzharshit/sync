@@ -356,3 +356,5 @@ def convert():
         return redirect('/playlists_spotify')
 
 
+if __name__ == '__main__':
+    app.run(debug=True, port=5000)
