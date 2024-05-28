@@ -1,38 +1,40 @@
 {% extends "layout.html" %}
 
 {% block title %}
-    View {{ name }}
+View {{ name }}
 {% endblock %}
 
 {% block main %}
+<div class="mb-4">
+    <h5>{{ name }}</h5>
+    <h6 class="text-muted">Playtime: {{ time | play_time }}</h6>
+</div>
 <table class="table table-dark table-bordered">
     <thead>
-      <tr>
-        <th scope="col">#</th>
-        <th scope="col">Name</th>
-        <th scope="col">Artists</th>
-        <th scope="col">Duration</th>
-        <th scope="col">Link</th>
-      </tr>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Name</th>
+            <th scope="col">Artists</th>
+            <th scope="col">Duration</th>
+            <th scope="col">Link</th>
+        </tr>
     </thead>
     <tbody>
-        <h5>{{ name }}</th>
-        <h5 class="text-muted">Playtime {{ time | play_time }}</th>
         {% for song in playlist %}
-            <tr>
-                <th scope="row" class="col-md-1">{{ loop.index }}</th>
-                <td class="col-md-3">{{ song.name }}</td>
-                <td class="col-md-2">{{ song.artists }}</td>
-                <td class="col-md-1">{{ song.duration | track_time }}</td>
-                <td class="col-md-1">
-                {% if song.url != None %}
-                    <a class="btn btn-success" href="{{ song.url }}" target="_blank">Listen</button>
+        <tr>
+            <th scope="row">{{ loop.index }}</th>
+            <td>{{ song.name }}</td>
+            <td>{{ song.artists }}</td>
+            <td>{{ song.duration | track_time }}</td>
+            <td>
+                {% if song.url %}
+                <a class="btn btn-custom" href="{{ song.url }}" target="_blank">Listen</a>
                 {% else %}
-                    <a class="btn btn-outline-danger disabled">Listen</button></td>
+                <a class="btn btn-outline-danger disabled">Listen</a>
                 {% endif %}
-                </td>
-            </tr>
+            </td>
+        </tr>
         {% endfor %}
     </tbody>
-  </table>
+</table>
 {% endblock %}
