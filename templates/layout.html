@@ -4,26 +4,32 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="initial-scale=1, width=device-width">
-    <link crossorigin="anonymous" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
-    <link href="/static/icon.ico" rel="icon">
+
+    <!-- Bootstrap CSS -->
+    <link crossorigin="anonymous" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link crossorigin="anonymous" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+
+    <!-- Shepherd.js CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/shepherd.js/dist/css/shepherd.css"/>
+
     <link href="/static/styles.css" rel="stylesheet">
+
     <title>Syncify: {% block title %}{% endblock %}</title>
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-md navbar-light">
+    <nav class="navbar navbar-expand-md navbar-light bg-light">
         <div class="container-fluid">
-            <a class="navbar-brand" href="/">Syncify</a>
+            <a class="navbar-brand" href="/"><span class="green">Syncify</span></a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav me-auto">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item"><a class="nav-link" href="/playlists_spotify">Spotify Playlists</a></li>
                     <li class="nav-item"><a class="nav-link" href="/playlists_youtube">YouTube Playlists</a></li>
                 </ul>
-                <ul class="navbar-nav ms-auto">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                     <li class="nav-item"><a class="nav-link" href="/auth">Authorize</a></li>
                 </ul>
             </div>
@@ -32,22 +38,137 @@
 
     {% if get_flashed_messages() %}
     <header>
-        <div class="alert alert-primary text-center" role="alert">
+        <div class="alert alert-primary mb-0 text-center" role="alert">
             {{ get_flashed_messages() | join(" ") }}
         </div>
     </header>
     {% endif %}
 
-    <main class="container py-5">
+    <main class="container-fluid py-5 text-center">
         {% block main %}{% endblock %}
     </main>
 
-    <footer class="text-center mt-4 pb-4">
-        <p>&copy; 2024 Syncify. All rights reserved.</p>
+    <footer class="bg-light text-center py-3">
+        <div class="container">
+            <p class="mb-0">&copy; 2024 Your Company. All rights reserved.</p>
+        </div>
     </footer>
 
-    <script crossorigin="anonymous" src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz4fnFO9gybL8bT5nA6b6/24c+I1tq4PzPOFmrY1Zz3rdvRaY7x5vW1Qbk"></script>
-    <script crossorigin="anonymous" src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.min.js" integrity="sha384-QG5ZT76t2ztE5rPeLX2Hx6I8/V15gzBjkXIsBRu7YtD0zGg5E3U4fEPj0e6AJpHM"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.min.js"></script>
+
+    <!-- Shepherd.js JS -->
+    <script type="module" src="https://cdn.jsdelivr.net/npm/shepherd.js/dist/shepherd.mjs"></script>
+
+    <script type="module">
+        import Shepherd from 'https://cdn.jsdelivr.net/npm/shepherd.js/dist/shepherd.mjs';
+
+        const tour = new Shepherd.Tour({
+            defaultStepOptions: {
+                cancelIcon: {
+                    enabled: true
+                },
+                classes: 'shadow-md bg-purple-dark',
+                scrollTo: { behavior: 'smooth', block: 'center' }
+            }
+        });
+
+        tour.addStep({
+            title: 'Welcome to Syncify',
+            text: 'This is the main page where you can start your journey to sync playlists.',
+            attachTo: {
+                element: 'h1',
+                on: 'bottom'
+            },
+            buttons: [
+                {
+                    action() {
+                        return this.next();
+                    },
+                    text: 'Next'
+                }
+            ],
+            id: 'welcome'
+        });
+
+        tour.addStep({
+            title: 'Navigation Bar',
+            text: 'Use the navigation bar to browse between different sections.',
+            attachTo: {
+                element: '.navbar',
+                on: 'bottom'
+            },
+            buttons: [
+                {
+                    action() {
+                        return this.back();
+                    },
+                    classes: 'shepherd-button-secondary',
+                    text: 'Back'
+                },
+                {
+                    action() {
+                        return this.next();
+                    },
+                    text: 'Next'
+                }
+            ],
+            id: 'navbar'
+        });
+
+        tour.addStep({
+            title: 'Authorization',
+            text: 'Connect your Spotify and YouTube accounts to get started.',
+            attachTo: {
+                element: 'a[href="/auth"]',
+                on: 'bottom'
+            },
+            buttons: [
+                {
+                    action() {
+                        return this.back();
+                    },
+                    classes: 'shepherd-button-secondary',
+                    text: 'Back'
+                },
+                {
+                    action() {
+                        return this.next();
+                    },
+                    text: 'Next'
+                }
+            ],
+            id: 'auth'
+        });
+
+        tour.addStep({
+            title: 'Get Started',
+            text: 'Click here to start the syncing process.',
+            attachTo: {
+                element: 'a.btn.btn-custom',
+                on: 'top'
+            },
+            buttons: [
+                {
+                    action() {
+                        return this.back();
+                    },
+                    classes: 'shepherd-button-secondary',
+                    text: 'Back'
+                },
+                {
+                    action() {
+                        return this.next();
+                    },
+                    text: 'Next'
+                }
+            ],
+            id: 'get-started'
+        });
+
+        tour.start();
+    </script>
 </body>
 
 </html>
