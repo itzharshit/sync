@@ -23,15 +23,15 @@ Convert Playlist
         <tbody>
             {% for video in playlist %}
             <tr>
-                <td class="col-md-1"><input type="checkbox" name="videoId" value="{{ video.id }}" checked></td>
-                <td class="col-md-4">{{ video.name }}</td>
-                <td class="col-md-3">{{ video.channel }}</td>
-                <td class="col-md-1"><a class="btn btn-custom" href="{{ video.url }}" target="_blank">Listen</a></td>
+                <td><input type="checkbox" name="videoId" value="{{ video.id }}" checked></td>
+                <td>{{ video.name }}</td>
+                <td>{{ video.channel }}</td>
+                <td><a class="btn btn-custom" href="{{ video.url }}" target="_blank">Listen</a></td>
             </tr>
             {% endfor %}
         </tbody>
     </table>
-    <div class="d-flex justify-content-between">
+    <div class="d-flex justify-content-between mt-4">
         <button class="btn btn-lg btn-custom" type="submit" formaction="/convert" formmethod="post">Confirm</button>
         <button class="btn btn-lg btn-danger" type="submit" formaction="/playlists_spotify">Cancel</button>
     </div>
