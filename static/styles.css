@@ -1,6 +1,7 @@
 /* Size for brand */
 nav .navbar-brand {
     font-size: xx-large;
+    color: #ff7f50;
 }
 
 /* Colors for brand */
@@ -27,38 +28,51 @@ nav .navbar-brand .green {
 }
 
 body {
-    background-color: #1e1e1e;
-    color: #e0e0e0;
+    background-color: #f8f9fa;
+    color: #343a40;
 }
 
 header {
-    background-color: #444;
-    color: #f1f1f1;
+    background-color: #f8f9fa;
+    color: #343a40;
 }
 
 a {
-    color: #76c7c0;
+    color: #007bff;
 }
 
 a:hover {
-    color: #5aa9a1;
+    color: #0056b3;
     text-decoration: none;
 }
 
 p, span, h1, h2, h3 {
-    color: #e0e0e0;
+    color: #343a40;
 }
 
 .btn-custom {
-    background-color: #76c7c0;
+    background: linear-gradient(135deg, #ff7f50, #ff6347);
     color: #fff;
+    border: none;
 }
 
 .btn-custom:hover {
-    background-color: #5aa9a1;
+    background: linear-gradient(135deg, #ff6347, #ff4500);
     color: #fff;
 }
 
-.table-dark th, .table-dark td, .table-dark thead th {
-    border-color: #565656;
+.navbar-toggler {
+    border: none;
+}
+
+.navbar-toggler-icon {
+    background-image: url('data:image/svg+xml;charset=utf8,%3Csvg viewBox="0 0 30 30" xmlns="http://www.w3.org/2000/svg"%3E%3Cpath stroke="rgba%28255, 127, 80, 0.7%29" stroke-width="2" stroke-linecap="round" stroke-miterlimit="10" d="M4 7h22M4 15h22M4 23h22"/%3E%3C/svg%3E');
+}
+
+.table-light th, .table-light td, .table-light thead th {
+    border-color: #ddd;
+}
+
+.table-hover tbody tr:hover {
+    background-color: #f1f1f1;
 }
