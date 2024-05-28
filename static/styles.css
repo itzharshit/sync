@@ -1,21 +1,21 @@
 /* General styling */
 body {
-    background-color: #ffffff;
-    color: #333333;
-    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-family: 'Arial', sans-serif;
+    background-color: #f0f2f5;
+    color: #333;
     margin: 0;
     padding: 0;
 }
 
 /* Navbar styling */
 nav.navbar {
-    background-color: #ffffff;
+    background: linear-gradient(45deg, #6a11cb 0%, #2575fc 100%);
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 nav.navbar .navbar-brand {
     font-size: xx-large;
-    color: #007bff;
+    color: white;
     font-weight: bold;
 }
 
@@ -24,27 +24,27 @@ nav.navbar .navbar-brand {
 }
 
 .navbar-toggler-icon {
-    background-image: url('data:image/svg+xml;charset=utf8,%3Csvg viewBox="0 0 30 30" xmlns="http://www.w3.org/2000/svg"%3E%3Cpath stroke="rgba%280, 123, 255, 0.7%29" stroke-width="2" stroke-linecap="round" stroke-miterlimit="10" d="M4 7h22M4 15h22M4 23h22"/%3E%3C/svg%3E');
+    background-image: url('data:image/svg+xml;charset=utf8,%3Csvg viewBox="0 0 30 30" xmlns="http://www.w3.org/2000/svg"%3E%3Cpath stroke="rgba%28%255,255,255,0.7%29" stroke-width="2" stroke-linecap="round" stroke-miterlimit="10" d="M4 7h22M4 15h22M4 23h22"/%3E%3C/svg%3E');
 }
 
 .navbar-nav .nav-link {
-    color: #007bff;
+    color: white;
 }
 
 .navbar-nav .nav-link:hover {
-    color: #0056b3;
+    color: #cfd8dc;
 }
 
 /* Button styling */
 .btn-custom {
-    background: linear-gradient(135deg, #ff7f50, #ff6347);
+    background: linear-gradient(45deg, #6a11cb, #2575fc);
     color: #ffffff;
     border: none;
     transition: background 0.3s ease;
 }
 
 .btn-custom:hover {
-    background: linear-gradient(135deg, #ff6347, #ff4500);
+    background: linear-gradient(45deg, #2575fc, #6a11cb);
 }
 
 .btn-danger {
@@ -112,7 +112,7 @@ main {
 }
 
 h1, h5 {
-    color: #007bff;
+    color: #6a11cb;
 }
 
 p.lead {
