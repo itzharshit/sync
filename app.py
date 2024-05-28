@@ -2,7 +2,6 @@ from flask import Flask, request, session, redirect, render_template, flash
 from flask_session import Session
 from auth_spot import create_spotify_oauth, get_spotify_user, check_spot
 from auth_yt import youtube_oauth, check_yt, get_yt_user
-from helpers import time_play, time_track
 import isodate
 
 app = Flask(__name__)
@@ -12,6 +11,25 @@ app.jinja_env.filters["play_time"] = time_play
 app.config["SESSION_PERMANENT"] = False
 app.config["SESSION_TYPE"] = "filesystem"
 Session(app)
+
+def time_track(ms):
+    seconds, ms = divmod(ms, 1000)
+    minutes, seconds = divmod(seconds, 60)
+    hours, minutes = divmod(minutes, 60)
+    if hours < 1:
+        return f'{int(minutes):01d}:{int(seconds):02d}'
+    else:
+        return f'{int(hours):1d}:{int(minutes):01d}:{int(seconds):02d}'
+    
+
+def time_play(ms):
+    seconds, ms = divmod(ms, 1000)
+    minutes, seconds = divmod(seconds, 60)
+    hours, minutes = divmod(minutes, 60)
+    if hours < 1:
+        return f'{int(minutes):01d}m {int(seconds):02d}s'
+    else:
+        return f'{int(hours):1d}h {int(minutes):01d}m'
 
 @app.after_request
 def after_request(response):
